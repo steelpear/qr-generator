@@ -1,12 +1,13 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-app-bar
       fixed
       app
-      color="white"
+      :color="$vuetify.breakpoint.xsOnly ? 'indigo' : 'white'"
+      :dark="$vuetify.breakpoint.xsOnly"
       flat
     >
-      <nuxt-link to="/">
+      <nuxt-link class="hidden-xs-only" to="/">
         <v-img
           src="/logoQR.png"
           alt="logo"
@@ -14,8 +15,11 @@
           max-width="360"
         />
       </nuxt-link>
-      <v-spacer />
-      <v-toolbar-title class="title text--secondary" v-text="title" />
+      <nuxt-link class="hidden-sm-and-up" style="text-decoration:none;" to="/">
+        <v-icon>home</v-icon>
+      </nuxt-link>
+      <v-spacer class="hidden-xs-only" />
+      <v-toolbar-title class="title" :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" v-text="title" />
       <v-btn
         icon
         class="ml-2"
@@ -44,17 +48,16 @@
       </div>
       <v-bottom-sheet
         v-model="cookiePolicy"
-        full-width
         hide-overlay
         persistent
       >
         <v-card class="py-2">
           <v-row align="center" justify="center">
-            <v-row align="center" justify="center">
+            <v-row align="center" justify="center" class="px-8">
               <v-icon large class="ml-3 mr-2 hidden-sm-and-down">
                 info
               </v-icon>
-              <v-col :class="$vuetify.breakpoint.smAndDown ? 'text-xs-justify ml-4' : 'text-xs-center'" style="max-width: fit-content;">
+              <v-col :class="$vuetify.breakpoint.smAndDown ? 'text-justify' : 'text-center'" style="max-width: fit-content;">
                 На этом сайте используются файлы <span class="font-weight-bold">cookie</span>. Продолжая просматривать его, Вы соглашаетесь с этим. Чтобы узнать больше <nuxt-link to="/policy" class="indigo--text font-weight-bold">
                   нажмите здесь
                 </nuxt-link>.

@@ -4,7 +4,11 @@
       <v-col cols="12" md="7" xs="12">
         <v-tabs
           v-model="qrTab"
-          vertical
+          show-arrows
+          next-icon="redo"
+          prev-icon="undo"
+          centered
+          grow
         >
           <v-tabs-slider />
 
@@ -22,6 +26,7 @@
             v-for="(tab, index) in tabs"
             :key="index"
             :value="'tab-' + index"
+            class="mt-8"
           >
             <qr-sms v-if="tab.component == 'SMS'" />
             <qr-text v-else-if="tab.component == 'Text'" />
@@ -36,7 +41,27 @@
           </v-tab-item>
         </v-tabs>
       </v-col>
-      <v-col cols="12" md="4" xs="12" class="text-center">
+      <v-col
+        ref="qrcolumn"
+        v-resize="onResize"
+        cols="12"
+        md="5"
+        xs="12"
+        class="text-center"
+      >
+        <v-slider
+          v-model="qrWidth"
+          step="10"
+          ticks="always"
+          thumb-label="always"
+          min="150"
+          :max="maxQrWidth"
+          append-icon="zoom_in"
+          prepend-icon="zoom_out"
+          class="hidden-xs-only"
+          @click:append="zoomIn"
+          @click:prepend="zoomOut"
+        />
         <qrcode
           ref="canvas"
           :value="qrValue ? qrValue : 'QR-Generator'"
@@ -48,7 +73,7 @@
             width: qrWidth,
             errorCorrectionLevel: errorCorrectionLevel
           }"
-          class="elevation-4"
+          class="elevation-4 d-inline-flex"
         />
         <v-slider
           v-model="correction"
@@ -61,116 +86,105 @@
           class="mt-4"
           @input="correctionInput"
         />
-        <v-row align="center" justify="center" class="mt-2">
-          <v-btn
-            class="ma-2"
-            color="indigo"
-            dark
-            tile
-            large
-            @click="paintMenu = !paintMenu"
-          >
-            <v-icon left>
-              mdi-format-color-fill
-            </v-icon>
-            Раскрасить
-          </v-btn>
-          <v-btn
-            class="ma-2"
-            color="indigo"
-            dark
-            tile
-            large
-            @click="saveImg"
-          >
-            <v-icon left>
-              mdi-content-save
-            </v-icon>
-            Сохранить
-          </v-btn>
+        <v-row align="center" justify="center" class="mt-2" dense>
+          <v-col cols="12" md="6" xs="auto" sm="6">
+            <v-btn
+              color="indigo"
+              dark
+              tile
+              large
+              block
+              @click="paintMenu = !paintMenu"
+            >
+              <v-icon left>
+                mdi-format-color-fill
+              </v-icon>
+              Раскрасить
+            </v-btn>
+          </v-col>
+          <v-col cols="12" md="6" xs="auto" sm="6">
+            <v-btn
+              color="indigo"
+              dark
+              tile
+              large
+              block
+              @click="saveImg"
+            >
+              <v-icon left>
+                mdi-content-save
+              </v-icon>
+              Сохранить
+            </v-btn>
+          </v-col>
         </v-row>
       </v-col>
-      <v-col cols="12" md="1" xs="12">
-        <v-slider
-          v-model="qrWidth"
-          step="10"
-          ticks="always"
-          thumb-label="always"
-          min="150"
-          max="360"
-          vertical
-          append-icon="zoom_in"
-          prepend-icon="zoom_out"
-          @click:append="zoomIn"
-          @click:prepend="zoomOut"
-        />
-      </v-col>
     </v-row>
+
     <v-bottom-sheet
       v-model="paintMenu"
       hide-overlay
+      scrollable
       inset
     >
-      <v-sheet>
-        <v-card>
-          <v-card-text>
-            <v-row align="center" justify="center">
-              <v-col cols="12" md="4" xs="12">
-                <p class="text-center mb-0">
-                  Фон
-                </p>
-                <v-color-picker
-                  v-model="qrBackColor"
-                  class="mx-auto"
-                  flat
-                  hide-inputs
-                  canvas-height="120"
-                />
-              </v-col>
-              <v-col cols="12" md="4" xs="12">
-                <p class="text-center mb-0">
-                  Пиксели
-                </p>
-                <v-color-picker
-                  v-model="qrFrontColor"
-                  class="mx-auto"
-                  flat
-                  hide-inputs
-                  canvas-height="120"
-                />
-              </v-col>
-              <v-col cols="12" md="3" xs="12" align-self="start" class="pt-9 pl-9">
-                <v-btn
-                  color="indigo"
-                  dark
-                  large
-                  tile
-                  block
-                  class="mb-6"
-                  @click="paintMenu = false"
-                >
-                  Ok
-                </v-btn>
-                <v-btn
-                  color="indigo"
-                  dark
-                  large
-                  tile
-                  block
-                  @click="resetColors"
-                >
-                  Сбросить
-                </v-btn>
-                <v-switch
-                  v-model="inverse"
-                  label="Инвертировать"
-                  @change="inverseColors"
-                />
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-sheet>
+      <v-card>
+        <v-card-text>
+          <v-row align="center" justify="center">
+            <v-col cols="12" md="4" xs="12">
+              <p class="text-center mb-0">
+                Фон
+              </p>
+              <v-color-picker
+                v-model="qrBackColor"
+                class="mx-auto"
+                flat
+                hide-inputs
+                canvas-height="120"
+              />
+            </v-col>
+            <v-col cols="12" md="4" xs="12">
+              <p class="text-center mb-0">
+                Пиксели
+              </p>
+              <v-color-picker
+                v-model="qrFrontColor"
+                class="mx-auto"
+                flat
+                hide-inputs
+                canvas-height="120"
+              />
+            </v-col>
+            <v-col cols="12" md="3" xs="12" align-self="start" class="pt-9 pl-9">
+              <v-btn
+                color="indigo"
+                dark
+                large
+                tile
+                block
+                class="mb-6"
+                @click="paintMenu = false"
+              >
+                Ok
+              </v-btn>
+              <v-btn
+                color="indigo"
+                dark
+                large
+                tile
+                block
+                @click="resetColors"
+              >
+                Сбросить
+              </v-btn>
+              <v-switch
+                v-model="inverse"
+                label="Инвертировать"
+                @change="inverseColors"
+              />
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
     </v-bottom-sheet>
   </v-container>
 </template>
@@ -204,7 +218,7 @@ export default {
   },
   data () {
     return {
-      qrWidth: 250,
+      qrWidth: 300,
       errorCorrectionLevel: 'M',
       qrFrontColor: '#000000ff',
       qrBackColor: '#ffffffff',
@@ -259,7 +273,8 @@ export default {
         }
       ],
       paintMenu: false,
-      inverse: false
+      inverse: false,
+      maxQrWidth: '300'
     }
   },
   computed: {
@@ -288,6 +303,9 @@ export default {
         return false
       }
     }
+  },
+  mounted () {
+    this.onResize()
   },
   methods: {
     zoomOut () {
@@ -329,7 +347,16 @@ export default {
       link.href = dataURL
       link.download = 'qr-generator.jpg'
       link.click()
+    },
+    onResize () {
+      this.maxQrWidth = this.$refs.qrcolumn.getBoundingClientRect().width - 40
     }
   }
 }
 </script>
+
+<style scoped>
+  .v-tab {
+    min-width: 65px;
+  }
+</style>
