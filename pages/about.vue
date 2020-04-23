@@ -98,6 +98,17 @@
   </v-container>
 </template>
 
+<script>
+export default {
+  data: () => ({
+    //
+  }),
+  mounted () {
+    this.$vuetify.goTo(0)
+  }
+}
+</script>
+
 <style scoped>
   .about-text {
     font-size: 18px;

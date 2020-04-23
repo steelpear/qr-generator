@@ -7,8 +7,12 @@
           show-arrows
           next-icon="redo"
           prev-icon="undo"
-          centered
-          grow
+          center-active
+          dark
+          background-color="indigo"
+          fixed-tabs
+          icons-and-text
+          slider-size="6"
         >
           <v-tabs-slider />
 
@@ -28,16 +32,16 @@
             :value="'tab-' + index"
             class="mt-8"
           >
-            <qr-sms v-if="tab.component == 'SMS'" />
-            <qr-text v-else-if="tab.component == 'Text'" />
-            <qr-vcard v-else-if="tab.component == 'BuisnessCard'" />
-            <qr-map v-else-if="tab.component == 'Map'" />
-            <qr-wifi v-else-if="tab.component == 'WiFi'" />
-            <qr-link v-else-if="tab.component == 'Link'" />
-            <qr-whatsapp v-else-if="tab.component == 'WhatsApp'" />
-            <qr-skype v-else-if="tab.component == 'Skype'" />
-            <qr-telegram v-else-if="tab.component == 'Telegram'" />
-            <qr-youtube v-else-if="tab.component == 'Youtube'" />
+            <qr-sms v-if="tab.component === 'SMS'" />
+            <qr-text v-else-if="tab.component === 'Text'" />
+            <qr-vcard v-else-if="tab.component === 'BuisnessCard'" />
+            <qr-map v-else-if="tab.component === 'Map'" />
+            <qr-wifi v-else-if="tab.component === 'WiFi'" />
+            <qr-link v-else-if="tab.component === 'Link'" />
+            <qr-whatsapp v-else-if="tab.component === 'WhatsApp'" />
+            <qr-skype v-else-if="tab.component === 'Skype'" />
+            <qr-telegram v-else-if="tab.component === 'Telegram'" />
+            <qr-youtube v-else />
           </v-tab-item>
         </v-tabs>
       </v-col>
@@ -306,6 +310,7 @@ export default {
   },
   mounted () {
     this.onResize()
+    this.$vuetify.goTo(0)
   },
   methods: {
     zoomOut () {
@@ -349,7 +354,10 @@ export default {
       link.click()
     },
     onResize () {
-      this.maxQrWidth = this.$refs.qrcolumn.getBoundingClientRect().width - 40
+      const width = this.$refs.qrcolumn.getBoundingClientRect().width - 40
+      if (width <= 440) {
+        this.maxQrWidth = width
+      } else { this.maxQrWidth = 440 }
     }
   }
 }

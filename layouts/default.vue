@@ -16,7 +16,9 @@
         />
       </nuxt-link>
       <nuxt-link class="hidden-sm-and-up" style="text-decoration:none;" to="/">
-        <v-icon>home</v-icon>
+        <v-icon large>
+          home
+        </v-icon>
       </nuxt-link>
       <v-spacer class="hidden-xs-only" />
       <v-toolbar-title class="title" :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" v-text="title" />
@@ -26,7 +28,9 @@
         nuxt
         to="/about"
       >
-        <v-icon>help_outline</v-icon>
+        <v-icon large>
+          help_outline
+        </v-icon>
       </v-btn>
     </v-app-bar>
     <v-content>
