@@ -6,6 +6,8 @@
       :color="$vuetify.breakpoint.xsOnly ? 'indigo' : 'white'"
       :dark="$vuetify.breakpoint.xsOnly"
       flat
+      max-width="95%"
+      class="mx-auto mb-12"
     >
       <nuxt-link class="hidden-xs-only" to="/">
         <v-img
