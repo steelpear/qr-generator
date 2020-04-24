@@ -17,6 +17,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
     "vue-cookies": "^1.7.0",
+    "vue-social-sharing": "^2.4.7",
     "vue-yandex-maps": "^0.10.7"
   },
   "devDependencies": {
