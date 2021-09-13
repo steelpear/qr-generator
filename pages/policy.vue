@@ -1,6 +1,6 @@
 <template>
   <v-container :class="{'px-4':$vuetify.breakpoint.smAndDown}">
-    <h1 class="text-xs-center">
+    <h1 class="text-center">
       Использование файлов cookie и политика конфиденциальности
     </h1>
     <img

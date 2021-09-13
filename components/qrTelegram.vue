@@ -1,19 +1,21 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
-        mdi-telegram
+        fab fah fa-lg fa-telegram-plane
       </v-icon>
-      <span class="display-1 font-weight-regular">Telegram</span>
+      <div class="text-h4 font-weight-regular">
+        Telegram
+      </div>
       <v-spacer />
       <v-btn icon @click="$refs.form.reset()">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="mt-5" />
     <v-form ref="form">
       <v-text-field
         v-model="telegram"
@@ -24,7 +26,7 @@
         :rules="[rules.required]"
         prepend-inner-icon="person"
         hint="Аккаунт или канал Telegram (без символа @)."
-        class="mt-10"
+        class="mt-8"
       />
     </v-form>
   </v-container>

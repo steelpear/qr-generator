@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container :class="{'pb-6' : $vuetify.breakpoint.xsOnly}">
     <v-row align="start" justify="center">
       <v-col cols="12" md="7" xs="12">
         <v-tabs
@@ -51,18 +51,21 @@
         cols="12"
         md="5"
         xs="12"
-        class="text-center"
+        class="text-center mt-2"
       >
         <v-slider
           v-model="qrWidth"
+          dense
+          hide-details
           step="10"
           ticks="always"
           thumb-label="always"
+          :thumb-size="30"
           min="150"
           :max="maxQrWidth"
           append-icon="zoom_in"
           prepend-icon="zoom_out"
-          class="hidden-xs-only"
+          class="hidden-xs-only mb-2"
           @click:append="zoomIn"
           @click:prepend="zoomOut"
         />
@@ -81,13 +84,15 @@
         />
         <v-slider
           v-model="correction"
+          dense
+          hide-details
           :tick-labels="correctionLabels"
           label="Коррекция"
           step="1"
           ticks="always"
           tick-size="4"
           :max="3"
-          class="mt-4"
+          class="mb-3 mt-1"
           @input="correctionInput"
         />
         <v-row align="center" justify="center" class="mt-2" dense>
@@ -135,40 +140,50 @@
         <v-card-text>
           <v-row align="center" justify="center">
             <v-col cols="12" md="4" xs="12">
-              <p class="text-center mb-0">
+              <p class="text-center mb-0 text-subtitle-1 text--primary">
                 Фон
               </p>
               <v-color-picker
                 v-model="qrBackColor"
                 class="mx-auto"
                 flat
+                hide-canvas
                 hide-inputs
-                canvas-height="120"
+                hide-mode-switch
+                hide-sliders
+                show-swatches
+                swatches-max-height="150"
+                :swatches="customPalette"
               />
             </v-col>
             <v-col cols="12" md="4" xs="12">
-              <p class="text-center mb-0">
+              <p class="text-center mb-0 text-subtitle-1 text--primary">
                 Пиксели
               </p>
               <v-color-picker
                 v-model="qrFrontColor"
                 class="mx-auto"
                 flat
+                hide-canvas
                 hide-inputs
-                canvas-height="120"
+                hide-mode-switch
+                hide-sliders
+                show-swatches
+                swatches-max-height="150"
+                :swatches="customPalette"
               />
             </v-col>
             <v-col cols="12" md="3" xs="12" align-self="start" class="pt-9 pl-9">
               <v-btn
-                color="indigo"
+                color="orange"
                 dark
                 large
                 tile
                 block
-                class="mb-6"
+                class="mb-4"
                 @click="paintMenu = false"
               >
-                Ok
+                Применить
               </v-btn>
               <v-btn
                 color="indigo"
@@ -182,7 +197,7 @@
               </v-btn>
               <v-switch
                 v-model="inverse"
-                label="Инвертировать"
+                label="Поменять цвета"
                 @change="inverseColors"
               />
             </v-col>
@@ -236,49 +251,56 @@ export default {
       qrTab: null,
       tabs: [
         {
-          icon: 'mdi-message-processing',
+          icon: 'far fa-comment-dots',
           component: 'SMS'
         },
         {
-          icon: 'mdi-text',
+          icon: 'fas fa-align-left',
           component: 'Text'
         },
         {
-          icon: 'mdi-card-account-details-outline',
+          icon: 'far fa-address-card',
           component: 'BuisnessCard'
         },
         {
-          icon: 'mdi-map-marker-radius-outline',
+          icon: 'fas fa-map-marker-alt',
           component: 'Map'
         },
         {
-          icon: 'mdi-wifi',
+          icon: 'fas fa-wifi',
           component: 'WiFi'
         },
         {
-          icon: 'mdi-link-variant',
+          icon: 'fas fa-link',
           component: 'Link'
         },
         {
-          icon: 'mdi-whatsapp',
+          icon: 'fab fa-whatsapp',
           component: 'WhatsApp'
         },
         {
-          icon: 'mdi-skype-business',
+          icon: 'fab fa-skype',
           component: 'Skype'
         },
         {
-          icon: 'mdi-telegram',
+          icon: 'fab fah fa-lg fa-telegram-plane',
           component: 'Telegram'
         },
         {
-          icon: 'mdi-youtube',
+          icon: 'fab fa-youtube',
           component: 'Youtube'
         }
       ],
       paintMenu: false,
       inverse: false,
-      maxQrWidth: '300'
+      maxQrWidth: '300',
+      customPalette: [
+        ['#FFFFFF', '#FFFF00', '#FF9900', '#CC6600', '#993300'],
+        ['#FF9966', '#FF6600', '#FF0000', '#CC0000', '#990000'],
+        ['#99FF66', '#33FF00', '#00CC00', '#009900', '#336600'],
+        ['#99CCFF', '#3399FF', '#3366FF', '#0033FF', '#0033CC'],
+        ['#CCCCCC', '#999999', '#666666', '#333333', '#000000']
+      ]
     }
   },
   computed: {
@@ -365,6 +387,6 @@ export default {
 
 <style scoped>
   .v-tab {
-    min-width: 65px;
+    min-width: 68px;
   }
 </style>

@@ -1,20 +1,22 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-whatsapp
       </v-icon>
-      <span class="display-1 font-weight-regular">WhatsApp</span>
+      <div class="text-h4 font-weight-regular">
+        WhatsApp
+      </div>
       <v-spacer />
       <v-btn icon @click="$refs.form.reset()">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
-    <div class="mt-10">
+    <v-divider class="mt-5" />
+    <div class="mt-8">
       <v-form ref="form">
         <v-text-field
           v-model="WhatsAppPhone"

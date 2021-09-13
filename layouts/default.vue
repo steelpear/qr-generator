@@ -6,7 +6,7 @@
       :color="$vuetify.breakpoint.xsOnly ? 'indigo' : 'white'"
       :dark="$vuetify.breakpoint.xsOnly"
       flat
-      max-width="95%"
+      :max-width="$vuetify.breakpoint.xsOnly ? '100%' : '95%'"
       class="mx-auto mb-12"
     >
       <nuxt-link class="hidden-xs-only" to="/">
@@ -23,10 +23,20 @@
         </v-icon>
       </nuxt-link>
       <v-spacer class="hidden-xs-only" />
-      <v-toolbar-title class="title" :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" v-text="title" />
+      <v-toolbar-title class="title hidden-sm-only" :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" v-text="title" />
       <v-btn
         icon
-        class="ml-2"
+        class="ml-4 hidden-xs-only"
+        nuxt
+        to="/"
+      >
+        <v-icon large>
+          home
+        </v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        class="ml-1"
         nuxt
         to="/about"
       >
@@ -34,74 +44,37 @@
           help_outline
         </v-icon>
       </v-btn>
+      <v-btn
+        icon
+        class="ml-1"
+        nuxt
+        to="/contacts"
+      >
+        <v-icon large>
+          mdi-contacts-outline
+        </v-icon>
+      </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <v-fade-transition>
           <nuxt />
         </v-fade-transition>
       </v-container>
-    </v-content>
+    </v-main>
     <v-footer
       fixed
       app
       color="indigo"
       dark
+      class="py-3"
     >
-      <v-spacer />
-
-      <social-sharing
-        title="QR-Generator"
-        description="Бесплатный генератор QR-кода."
-        quote="Бесплатный генератор QR-кода."
-        hashtags="qr-code,free,generator"
-        twitter-user="steelpear"
-        inline-template
-      >
-        <div class="sharing">
-          <network network="email" class="hidden-xs-only">
-            <v-icon>mdi-email-outline</v-icon>
-          </network>
-          <network network="facebook">
-            <v-icon>mdi-facebook</v-icon>
-          </network>
-          <network network="linkedin" class="hidden-xs-only">
-            <v-icon>mdi-linkedin</v-icon>
-          </network>
-          <network network="odnoklassniki">
-            <v-icon>mdi-odnoklassniki</v-icon>
-          </network>
-          <network network="pinterest" class="hidden-xs-only">
-            <v-icon>mdi-pinterest</v-icon>
-          </network>
-          <network network="reddit" class="hidden-xs-only">
-            <v-icon>mdi-reddit</v-icon>
-          </network>
-          <network network="skype" class="hidden-xs-only">
-            <v-icon>mdi-skype</v-icon>
-          </network>
-          <network network="telegram">
-            <v-icon>mdi-telegram</v-icon>
-          </network>
-          <network network="twitter">
-            <v-icon>mdi-twitter</v-icon>
-          </network>
-          <network network="vk">
-            <v-icon>mdi-vk</v-icon>
-          </network>
-          <network network="weibo" class="hidden-xs-only">
-            <v-icon>mdi-sina-weibo</v-icon>
-          </network>
-          <network network="whatsapp">
-            <v-icon>mdi-whatsapp</v-icon>
-          </network>
-        </div>
-      </social-sharing>
-
-      <v-spacer />
-      <div class="overline">
+      <div class="overline" :class="$vuetify.breakpoint.smAndDown ? 'mx-auto' : 'copyright'">
         &copy; qr-generator {{ new Date().getFullYear() }}
       </div>
+      <v-spacer v-if="$vuetify.breakpoint.smAndUp" />
+      <Share :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" />
+      <v-spacer v-if="$vuetify.breakpoint.smAndUp" />
       <v-bottom-sheet
         v-model="cookiePolicy"
         hide-overlay
@@ -125,6 +98,7 @@
           </v-row>
         </v-card>
       </v-bottom-sheet>
+      </sharenetwork>
     </v-footer>
   </v-app>
 </template>
@@ -132,17 +106,17 @@
 <script>
 import Vue from 'vue'
 import VueCookies from 'vue-cookies'
-const SocialSharing = require('vue-social-sharing')
-Vue.use(SocialSharing)
+import Share from '~/components/Share.vue'
 Vue.use(VueCookies)
 export default {
+  components: { Share },
   data () {
     return {
-      title: 'Генератор QR-кода',
+      title: 'Генератор QR-кодов',
       cookiePolicy: true
     }
   },
-  created () {
+  mounted () {
     if (this.$cookies.get('cookie_assent')) {
       this.cookiePolicy = false
     }
@@ -157,12 +131,7 @@ export default {
 </script>
 
 <style>
-  .logo { margin-top: 30px; }
-  .sharing span {
-    cursor: pointer;
-    margin: 0 3px;
-  }
-  .sharing span:focus { outline: none; }
-  .sharing .v-icon {color: lightgrey;}
-  .sharing .v-icon:hover {color: white;}
+  .logo { margin-top: 32px; }
+  .copyright { position: absolute }
+  a {text-decoration: none;}
 </style>

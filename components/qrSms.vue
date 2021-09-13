@@ -1,23 +1,23 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         {{ titleIcon }}
       </v-icon>
-      <span class="sms-title display-1 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 1}" @click="mode('sms')">SMS</span>
-      <span class="mx-1 display-1 font-weight-regular">/</span>
-      <span class="sms-title display-1 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 2}" @click="mode('call')">Звонок</span>
-      <span class="mx-1 display-1 font-weight-regular">/</span>
-      <span class="sms-title display-1 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 3}" @click="mode('email')">E-Mail</span>
+      <span class="sms-title text-h4 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 1}" @click="mode('sms')">SMS</span>
+      <span class="mx-1 text-h4 font-weight-regular">/</span>
+      <span class="sms-title text-h4 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 2}" @click="mode('call')">Звонок</span>
+      <span class="mx-1 text-h4 font-weight-regular">/</span>
+      <span class="sms-title text-h4 font-weight-regular" :class="{'indigo--text text--darken-3': titleBtn == 3}" @click="mode('email')">E-Mail</span>
       <v-spacer />
       <v-btn icon @click="$refs.form.reset()">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="mt-5 mb-2" />
     <v-form ref="form">
       <v-container grid-list-md px-0>
         <v-row dense>

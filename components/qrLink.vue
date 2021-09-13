@@ -1,15 +1,17 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-link-variant
       </v-icon>
-      <span class="display-1 font-weight-regular">Ссылка</span>
+      <div class="text-h4 font-weight-regular">
+        Ссылка
+      </div>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="mt-5" />
 
     <v-text-field
       v-model="LinkData"
@@ -17,12 +19,11 @@
       label="Ссылка на интернет-ресурс"
       value=""
       counter="100"
-      prepend-inner-icon="link"
+      prepend-inner-icon="mdi-link-variant"
       hint="С указанием интернет-протокола. &quot;http://&quot;, &quot;https://&quot; и др. Например: &quot;https://qr-board.ru&quot; "
       clearable
       outlined
-      class="mt-10"
-      prefix="http://"
+      class="mt-8"
     />
   </v-container>
 </template>

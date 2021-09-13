@@ -1,37 +1,37 @@
-import colors from 'vuetify/es5/util/colors'
-
 export default {
-  mode: 'spa',
+  // mode: 'spa',
+  target: 'static',
   /*
   ** Headers of the page
   */
   head: {
-    titleTemplate: 'Генератор QR-кода',
-    title: 'Генератор QR-кода',
+    titleTemplate: 'Генератор QR-кодов онлайн',
+    title: 'Генератор QR-кодов онлайн',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Бесплатный генератор QR-кода' }
+      { hid: 'description', name: 'description', content: 'Бесплатный генератор QR-кодов онлайн. Создание QR-кодов различных форматов - визитка, геолокация, ссылка, YouTube, WhatsApp, Telegram и других. Полученный QR-код можно раскрасить, изменить его размер и сохранить на компьютер.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Material+Icons' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Material+Icons' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css' }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: 'blue' },
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  // css: [
+  // ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/ymapPlugin.js', mode: 'client' }
+    { src: '~/plugins/ymapPlugin.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -44,16 +44,19 @@ export default {
   /*
   ** Nuxt.js modules
   */
+
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'nuxt-babel',
+    'vue-social-sharing/nuxt'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  // axios: {
+  // },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -61,18 +64,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
-      }
+      dark: false
     }
   },
   /*
@@ -82,6 +74,9 @@ export default {
     /*
     ** You can extend webpack config here
     */
+    transpile: [
+      'vuetify/lib'
+    ],
     extend (config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({

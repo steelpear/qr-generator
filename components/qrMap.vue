@@ -1,19 +1,21 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-map-marker-radius-outline
       </v-icon>
-      <span class="display-1 font-weight-regular">Географические координаты</span>
+      <div class="text-h4 font-weight-regular">
+        Географические координаты
+      </div>
       <v-spacer />
       <v-btn icon @click="resetMap">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="my-5" />
     <v-form ref="form">
       <yandex-map
         :settings="mapSettings"

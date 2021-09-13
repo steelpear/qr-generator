@@ -1,21 +1,23 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-wifi
       </v-icon>
-      <span class="display-1 font-weight-regular">Wi-Fi</span>
+      <div class="text-h4 font-weight-regular">
+        Wi-Fi
+      </div>
       <v-spacer />
       <v-btn icon @click="$refs.form.reset()">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="mt-5" />
     <v-form ref="form">
-      <v-row class="mt-8">
+      <v-row class="mt-5">
         <v-col cols="12">
           <v-text-field
             v-model="wifiNetworkName"

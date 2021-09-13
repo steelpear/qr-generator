@@ -1,15 +1,17 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-text
       </v-icon>
-      <span class="display-1 font-weight-regular">Текст</span>
+      <div class="text-h4 font-weight-regular">
+        Текст
+      </div>
     </v-row>
-    <v-divider class="mb-5" />
+    <v-divider class="mt-5" />
 
     <v-textarea
       v-model="TextData"
@@ -20,7 +22,7 @@
       clearable
       outlined
       hint="Помните - слишком длинный текст может отрицательно сказаться на правильном распознавании кода!"
-      class="mt-10"
+      class="mt-8"
     />
   </v-container>
 </template>

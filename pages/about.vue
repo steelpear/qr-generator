@@ -11,7 +11,7 @@
       style="float:right"
     >
     <p class="about-text grey--text text--darken-3 font-weight-light mt-2">
-      <span class="red--text font-weight-medium">QR-код</span> (Quick Response Code) был придуман в 1994 году в Японии для нужд автомобильной промышленности для маркировки и учёта деталей. Штрих-код, который использовался до этого, перестал справляться с возросшим объёмом информации.
+      <span class="red--text font-weight-medium">QR-код</span> (Quick Response Code) был придуман в 1994 году в Японии для нужд автомобильной промышленности с целью маркировки и учёта деталей. Штрих-код, который использовался до этого, перестал справляться с возросшим объёмом информации.
     </p>
     <p class="about-text grey--text text--darken-3 font-weight-light mt-2">
       С улучшением качества камер смартфонов QR-код получал всё более широкое распространение и в итоге шагнул далеко за пределы автоконцернов. QR-код способен в графическом виде компактно зашифровать довольно значительный объём информации – текст, ссылку, визитку, географическое положение, параметры подключения к Wi-Fi сети и многое другое.
@@ -22,20 +22,32 @@
     <h1 class="text-center">
       Некоторые сканеры QR-кода
     </h1>
-    <p class="headline indigo--text text--darken-3 mt-2 text-center">
-      Для Android
-    </p>
+    <div class="text-center my-6">
+      <v-chip
+        class="px-8 text-h5"
+        color="primary"
+        x-large
+        dark
+      >
+        <v-avatar left>
+          <v-icon>
+            mdi-check-bold
+          </v-icon>
+        </v-avatar>
+        Для Android
+      </v-chip>
+    </div>
     <v-row align="center" class="mb-4">
       <v-col cols="12" md="2">
         <v-img src="1.webp" width="100" class="mx-auto" />
       </v-col>
-      <v-col cols="12" md="7" class="text-center py-2">
+      <v-col cols="12" md="8" class="text-center py-2">
         <a class="title blue--text text--darken-3" href="https://play.google.com/store/apps/details?id=com.teacapps.barcodescanner" target="_blank">Сканер QR и штрих-кодов</a>
         <p class="caption">
           TeaCapps
         </p>
       </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-img src="1.png" width="130" class="mx-auto" />
       </v-col>
     </v-row>
@@ -43,13 +55,13 @@
       <v-col cols="12" md="2">
         <v-img src="2.webp" width="100" class="mx-auto" />
       </v-col>
-      <v-col cols="12" md="7" class="text-center py-2">
+      <v-col cols="12" md="8" class="text-center py-2">
         <a class="title blue--text text--darken-3" href="https://play.google.com/store/apps/details?id=com.google.zxing.client.android" target="_blank">Barcode Scanner</a>
         <p class="caption">
           ZXing Team
         </p>
       </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-img src="2.png" width="130" class="mx-auto" />
       </v-col>
     </v-row>
@@ -61,20 +73,32 @@
         Некоторые производители смартфонов на Android предустанавливают на свои модели приложения для считывания QR и штрих-кодов. Изучите инструкцию пользователя - возможно Ваш смартфон уже обладает необходимым функционалом.
       </v-col>
     </v-row>
-    <p class="headline indigo--text text--darken-3 mt-2 text-center">
-      Для iPhone
-    </p>
+    <div class="text-center my-6">
+      <v-chip
+        class="px-8 text-h5"
+        color="orange"
+        x-large
+        dark
+      >
+        <v-avatar left>
+          <v-icon>
+            mdi-check-bold
+          </v-icon>
+        </v-avatar>
+        Для iPhone
+      </v-chip>
+    </div>
     <v-row align="center">
       <v-col cols="12" md="2">
         <v-img src="3.png" width="100" class="mx-auto" />
       </v-col>
-      <v-col cols="12" md="7" class="text-center py-2">
+      <v-col cols="12" md="8" class="text-center py-2">
         <a class="title blue--text text--darken-3" href="https://apps.apple.com/ru/app/qr-%D1%81%D0%BA%D0%B0%D0%BD%D0%B5%D1%80-%D1%88%D1%82%D1%80%D0%B8%D1%85-%D0%BA%D0%BE%D0%B4%D0%B0-qr-%D0%BA%D0%BE%D0%B4/id1262922153" target="_blank">QR сканер штрих-кода, QR-код</a>
         <p class="caption">
           TALENT ACQUISITIONS PTY LTD
         </p>
       </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="12" md="2">
         <v-img src="33.png" width="130" class="mx-auto" />
       </v-col>
     </v-row>
@@ -93,6 +117,11 @@
     <p class="title mt-4 text-center">
       <nuxt-link to="/policy" class="indigo--text">
         Использование файлов cookie и политика конфиденциальности
+      </nuxt-link>
+    </p>
+    <p class="title mt-4 text-center">
+      <nuxt-link to="/contacts" class="indigo--text">
+        Контакты и прочее
       </nuxt-link>
     </p>
   </v-container>

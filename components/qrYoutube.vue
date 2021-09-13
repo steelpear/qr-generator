@@ -1,20 +1,22 @@
 <template>
   <v-container pt-1>
-    <v-row>
+    <v-row align="center">
       <v-icon
         large
         class="mr-2"
       >
         mdi-youtube
       </v-icon>
-      <span class="display-1 font-weight-regular">YouTube <span class="headline">({{ modeTitle }})</span></span>
+      <div class="text-h4 font-weight-regular">
+        YouTube <span class="headline">({{ modeTitle }})</span>
+      </div>
       <v-spacer />
       <v-btn icon @click="reset">
         <v-icon>clear</v-icon>
       </v-btn>
     </v-row>
-    <v-divider class="mb-5" />
-    <v-row align="start" justify="center" dense class="mt-10">
+    <v-divider class="mt-5" />
+    <v-row align="start" justify="center" dense class="mt-8">
       <v-col cols="12" md="9">
         <v-form ref="form">
           <v-text-field
