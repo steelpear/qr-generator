@@ -17,13 +17,12 @@
           max-width="360"
         />
       </nuxt-link>
+      <v-spacer />
       <nuxt-link class="hidden-sm-and-up" style="text-decoration:none;" to="/">
         <v-icon large>
-          home
+          fas fa-home
         </v-icon>
       </nuxt-link>
-      <v-spacer class="hidden-xs-only" />
-      <v-toolbar-title class="title hidden-sm-only" :class="{'mx-auto':$vuetify.breakpoint.xsOnly}" v-text="title" />
       <v-btn
         icon
         class="ml-4 hidden-xs-only"
@@ -31,7 +30,17 @@
         to="/"
       >
         <v-icon large>
-          home
+          fas fa-home
+        </v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        class="ml-4"
+        nuxt
+        to="/decode"
+      >
+        <v-icon large>
+          fas fa-qrcode
         </v-icon>
       </v-btn>
       <v-btn
@@ -41,7 +50,7 @@
         to="/about"
       >
         <v-icon large>
-          help_outline
+          fas fa-info-circle
         </v-icon>
       </v-btn>
       <v-btn
@@ -51,7 +60,7 @@
         to="/contacts"
       >
         <v-icon large>
-          mdi-contacts-outline
+          far fa-address-book
         </v-icon>
       </v-btn>
     </v-app-bar>

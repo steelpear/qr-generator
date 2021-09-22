@@ -1,6 +1,6 @@
 <template>
   <v-container :class="{'px-4':$vuetify.breakpoint.smAndDown}">
-    <h1 class="text-center mt-8">
+    <h1 class="text-center">
       Контакты и прочее
     </h1>
 

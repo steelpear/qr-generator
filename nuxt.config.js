@@ -31,7 +31,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/ymapPlugin.js', ssr: false }
+    { src: '~/plugins/ymapPlugin.js', ssr: false },
+    { src: '~/plugins/qrCodeReader.js', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

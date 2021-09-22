@@ -1,6 +1,6 @@
 <template>
   <v-container :class="{'px-4':$vuetify.breakpoint.smAndDown}">
-    <h1 class="text-xs-center">
+    <h1 class="text-center">
       Что такое QR-код?
     </h1>
     <img

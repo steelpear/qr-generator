@@ -19,6 +19,7 @@
     "nuxt-babel": "^1.0.1",
     "vue": "^2.6.14",
     "vue-cookies": "^1.7.4",
+    "vue-qrcode-reader": "^3.0.3",
     "vue-social-sharing": "^3.0.8",
     "vue-yandex-maps": "^0.10.12"
   },
