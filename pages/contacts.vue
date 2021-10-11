@@ -34,6 +34,21 @@
       </div>
     </v-row>
 
+    <v-row align="center" class="mt-8">
+      <v-icon
+        large
+        class="mr-2"
+      >
+        mdi-link-variant
+      </v-icon>
+      <div class="headline">
+        <a href="https://all-letters.ru" target="_blank">Письма</a>
+      </div>
+      <div class="title ml-2">
+        - Письма, поздравления, благодарности.
+      </div>
+    </v-row>
+
     <v-divider class="my-6" />
 
     <v-row align="start">
