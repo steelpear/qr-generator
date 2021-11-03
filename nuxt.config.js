@@ -10,7 +10,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Бесплатный генератор QR-кодов онлайн. Создание QR-кодов различных форматов - визитка, геолокация, ссылка, YouTube, WhatsApp, Telegram и других. Полученный QR-код можно раскрасить, изменить его размер и сохранить на компьютер.' }
+      { hid: 'description', name: 'description', content: 'Бесплатный генератор QR-кодов онлайн. Создание QR-кодов различных форматов - визитка, геолокация, ссылка, YouTube, WhatsApp, Telegram и других. Полученный QR-код можно раскрасить, изменить его размер и сохранить на компьютер.' },
+      { hid: 'keywords', name: 'keywords', content: 'qr код генератор, создать qr код онлайн, qr код сканер онлайн, создать qr-код бесплатно, генератор qr кода, qr code generator' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

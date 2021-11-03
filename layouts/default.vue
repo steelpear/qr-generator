@@ -89,7 +89,7 @@
         hide-overlay
         persistent
       >
-        <v-card class="py-2">
+        <v-card class="py-8">
           <v-row align="center" justify="center">
             <v-row align="center" justify="center" class="px-8">
               <v-icon large class="ml-3 mr-2 hidden-sm-and-down">
