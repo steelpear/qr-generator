@@ -5,7 +5,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    titleTemplate: 'Генератор QR-кодов онлайн',
+    titleTemplate: '%s - Генератор QR-кодов онлайн',
     title: 'Генератор QR-кодов онлайн',
     meta: [
       { charset: 'utf-8' },

@@ -303,6 +303,11 @@ export default {
       ]
     }
   },
+  head () {
+    return {
+      title: 'Главная'
+    }
+  },
   computed: {
     qrValue () {
       if (this.qrTab === 'tab-0') {

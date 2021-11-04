@@ -129,9 +129,11 @@
 
 <script>
 export default {
-  data: () => ({
-    //
-  }),
+  head () {
+    return {
+      title: 'Информация'
+    }
+  },
   mounted () {
     this.$vuetify.goTo(0)
   }

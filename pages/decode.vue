@@ -135,6 +135,11 @@ export default {
     dragover: false,
     loading: true
   }),
+  head () {
+    return {
+      title: 'Расшифровать QR-код'
+    }
+  },
   computed: {
     camera () {
       if (this.tab === 'tab-3') {

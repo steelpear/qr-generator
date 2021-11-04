@@ -73,9 +73,11 @@
 
 <script>
 export default {
-  data: () => ({
-    //
-  }),
+  head () {
+    return {
+      title: 'Политика конфиденциальности'
+    }
+  },
   mounted () {
     this.$vuetify.goTo(0)
   }
